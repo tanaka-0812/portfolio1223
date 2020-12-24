@@ -190,7 +190,8 @@ nav.globalMenu.active {
     height: auto;
 }
 .articl-wrapper {
-    width: 78vw;
+    max-width: 1280px;
+    width: 85%;
     margin: 0 auto;
     margin-top: 80px;
     color: rgb(51 ,51,51);
