@@ -1,0 +1,673 @@
+@charset "utf-8";
+
+body {
+    max-width: 1280px;
+    min-height: 100vh;
+    margin: 0 auto;
+}
+
+header {
+    background-color: rgb(51, 51, 51);
+    max-width: 1280px;
+    height: 70px;
+    font-family: 'Noto Serif JP', serif;
+}
+
+/* ーーーーーーーーーーーーーPCのナビメニューになります */
+
+#navigation {
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+#navigation li{
+    margin: auto 10px;
+    position: relative;
+    font-size: 17px;
+}
+#navigation li a{
+    text-decoration: none;
+    margin: 10px;
+    padding: 25px;
+    color: white;
+}
+#navigation li i{
+    margin-right: 10px;
+}
+#navigation li ul{
+    position: absolute;
+    width: 250px;
+    margin-top: 25px;
+    background-color: rgba(51,51,51,0.9);
+    display: none;
+}
+#navigation li:hover>ul{
+    display: block;
+}
+#navigation li ul li{
+    margin: 0;
+    padding: 20px 15px 20px 0px;
+    font-size: 16px;
+    
+}
+#navigation li ul li:nth-child(n+2){
+    border-top: white 1px solid;
+}
+
+/* ーーーーーーーーーーーーここからはタブレット・スマホのメニューバーになります。 */
+
+nav.globalMenu {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    background: #fff;
+    text-align: center;
+    transform: translateY(-100%);
+    transition: all 0.6s;
+    width: 100%;
+  }
+
+  
+  nav.globalMenu ul {
+    background: rgb(51,51,51);
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+  }
+  
+  nav.globalMenu ul li {
+    font-size: 1.1em;
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    border-bottom: 1px solid white;
+  }
+  
+  /* 最後はラインを描かない */
+  nav.globalMenu ul li:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  
+  nav.globalMenu ul li a {
+    display: block;
+    color: white;
+    padding: 25px 0;
+    text-decoration: none;
+  }
+  
+  /* このクラスを、jQueryで付与・削除する */
+  nav.globalMenu.active {
+    transform: translateY(0%);
+  }
+  
+  .navToggle {
+    display: block;
+    position: fixed;    /* bodyに対しての絶対位置指定 */
+    right: 20px;
+    top: 10px;
+    width: 42px;
+    height: 51px;
+    cursor: pointer;
+    z-index: 10;
+    background: #666;
+    text-align: center;
+  }
+  
+  .navToggle span {
+    display: block;
+    position: absolute;    /* .navToggleに対して */
+    width: 30px;
+    border-bottom: solid 3px #eee;
+    -webkit-transition: .35s ease-in-out;
+    -moz-transition: .35s ease-in-out;
+    transition: .35s ease-in-out;
+    left: 6px;
+  }
+  
+  .navToggle span:nth-child(1) {
+    top: 9px;
+  }
+  
+  .navToggle span:nth-child(2) {
+    top: 18px;
+  }
+  
+  .navToggle span:nth-child(3) {
+    top: 27px;
+  }
+  
+  .navToggle span:nth-child(4) {
+    border: none;
+    color: #eee;
+    font-size: 9px;
+    font-weight: bold;
+    top: 34px;
+  }
+  
+ 
+  
+  /* 最初のspanをマイナス45度に */
+  .navToggle.active span:nth-child(1) {
+    top: 18px;
+    left: 6px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+  
+  /* 2番目と3番目のspanを45度に */
+  .navToggle.active span:nth-child(2),
+  .navToggle.active span:nth-child(3) {
+    top: 18px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+
+  
+/* ---------------------メイントップになります */
+
+.top-view {
+    max-width: 100%;
+    height: auto;
+}
+.top-view-sp {
+    display: none;
+}
+
+/* ーーーーーーーーーーーーーーここからは自己紹介の覧です */
+.introduction-contents {
+    margin-top: 80px;
+    margin-bottom: 50px;
+}
+.intorduction-image {
+    max-width: 280px;
+    max-height: 321px;
+    width: 40vw;
+    height: 40vw;
+    margin-left: 10%;
+    margin-right: 3%;
+}
+.introduction {
+    display: flex;
+}
+.name {
+    font-size: 2rem;
+    color: rgb(77, 76, 76);
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 500;
+    width: 100%;
+    margin: 15px auto;
+    text-align: left;
+}
+
+.introduction-article {
+    width: 82%;
+    font-size: 16px;
+    color: rgb(77, 76, 76);
+    line-height: 1.8;
+    border-top: 1px solid;
+    padding-top: 15px;
+}
+.page-title {
+    max-width: 333px;
+    width: 50vw;
+    height: auto;
+    margin-bottom: 25px;
+}
+
+/* 職務経歴はここから */
+.resume-wrapper{
+    position: relative;
+    max-width: 1280px;
+    width: 100%;
+    height: auto;
+    padding-bottom: 200px;
+}
+
+.bg-resume {
+    background: rgb(51 ,51,51);
+    width: 100%;
+    height: 750px;
+    position: absolute;
+    bottom: 0;
+    clip-path: polygon(0% 30%, 100% 0%, 100% 70%, 0 100%);
+}
+
+.resume{
+    max-width: 972px;
+    width: 85vw;
+    height: auto;
+    position: relative;
+    margin: 0 auto;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px rgb(31, 31, 31) solid;
+}
+
+/* 自己スキル紹介はここから */
+.skill-wrapper {
+    margin-bottom: 100px;
+}
+
+.skilltitle-wrapper {
+    margin-left: 7%;
+    margin-top: 60px;
+    margin-bottom: 50px;
+
+}
+
+
+.item-contents {
+    list-style: none;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    margin-left: 6%;
+    margin-right: 6%;
+}
+.item-list {
+    display: flex;
+    width: 47%;
+    margin-bottom: 60px;
+}
+
+.item-contents::after {
+    display: block;
+    content: "";
+    width: 47%;
+    /* justify-contentだと最後のスペースが不揃いになるので見えないコンテンツを入れて揃える */
+}
+
+
+.item-contents li img{
+    max-width: 114px;
+    max-height: 114px;
+    margin-right: 20px;
+    font-size: 0;
+}
+li .skill-title {
+    margin: 5px 0 13px 0;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: rgb(66 ,64,64);
+}
+li .mark {
+    font-size: 0.8rem;
+    color: rgb(221, 58, 89);
+}
+li .article {
+    font-size: 15px;
+    line-height: 1.3;
+}
+
+/* ここから実績紹介はここから */
+.worktitle-wrapper {
+    margin-left: 7%;
+    margin-bottom: 40px;
+}
+
+
+
+.work-contents {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    list-style: none;
+    margin-left: 6%;
+    margin-right: 6%;
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 500;
+}
+
+
+.work-item-wrapper {
+    max-width: 330px;
+    margin-bottom: 80px;
+}
+.work-item-wrapper img{
+    max-width: 330px;
+    width: 36vw;
+    font-size: 0;
+}
+
+.work-item {
+    margin-bottom: 30px;
+    text-align: center;
+}
+.work-item p {
+    margin-top: 20px;
+    font-size: 2rem;
+    color: rgb(66,64,64);
+}
+.work-item a {
+    font-size: 1rem;
+    text-decoration: none;
+    color: rgb(0, 172, 172);
+}
+.work-contents::after {
+    display: block;
+    content: "";
+    max-width: 330px;
+    width: 36vw;
+}
+
+
+
+footer {
+    background: rgb(51 ,51,51);
+    height: 300px;
+    margin-top: 60px;
+    font-family: 'Noto Serif JP', serif;
+}
+.footer-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact {
+    margin-left: 10%;
+    margin-top: 70px;
+    color: white;
+}
+.footer-name {
+    font-size: 2rem;
+
+}
+.footer-tel {
+    font-size: 1.2rem;
+    margin-top: 25px;
+}
+.footer-mail {
+    font-size: 1.2rem;
+    margin-top: 25px;
+}
+footer nav {
+    text-align: right;
+    margin-top: 70px;
+    margin-right: 70px;
+    line-height: 2;
+}
+footer li {
+    display: inline-block;
+    list-style: none;
+    min-width: 90px;
+}
+footer li:not(:last-child){
+    border-right: 2px solid white;
+}
+footer li>*{
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.footer-nav a {
+    text-decoration: none;
+    color: white;
+}
+
+.footer a:hover{
+    color:rgb(247, 227, 77);
+    border-bottom:2px solid rgb(247, 227, 77);
+    padding-bottom: 4px;
+}
+footer .copylight {
+    text-align: center;
+    color: white;
+    margin-top: 60px;
+    line-height: 1.5;
+    font-size: 12px;
+}
+
+
+
+
+
+@media screen and (min-width:1000px){
+    .navToggle {
+        display: none;
+    }
+
+}
+
+
+
+
+@media screen and (max-width:1000px){
+    .pc-nav {
+        display: none;
+    }
+}
+
+@media screen and (max-width:850px){
+        
+    .introduction-contents {
+        margin: 50px auto;
+        text-align: center;
+    }
+    .intorduction-image {
+        width: 30vw;
+        height: 34vw;
+        margin-left: 3%;
+        margin-right: 2%;
+    }
+
+    .name {
+        font-size: 1.6rem;
+        width: 80%;
+    }
+
+    .introduction-article {
+        width: 80%;
+        font-size: 0.85rem;
+        text-align: left;
+        margin: 0 auto;
+    }
+    .page-title {
+        width: 35vw;
+    }
+    .resume-wrapper {
+        padding-bottom: 100px;
+    }
+    .bg-resume {
+        height: 600px;
+    }
+    .resume{
+        width: 81vw;
+    }
+
+    .skill-wrapper {
+        margin-bottom: 20px;
+    }
+    .item-list {
+        width: 47%;
+    }
+    .item-contents {
+        transform: scale(0.9);
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+    .item-contents::after {
+        width: 47%;
+    }
+    .work-item-wrapper{
+        margin-bottom: 30px;
+    }
+
+    .work-contents {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+
+
+    .contact {
+        margin-left: 7%;
+    }
+    .footer-name {
+        font-size: 1.7rem;
+    
+    }
+    .footer-tel {
+        font-size: 1rem;
+        margin-top: 20px;
+    }
+    .footer-mail {
+        font-size: 1rem;
+        margin-top: 20px;
+    }
+    footer nav {
+        font-size: 0.9rem;
+    }
+    footer li>*{
+        padding-right: 9px;
+        padding-left: 9px;
+    }
+    footer li {
+        min-width: unset;
+    }
+}
+
+
+@media screen and (max-width:450px){
+    .top-view {
+        display: none;
+    }
+    .top-view-sp {
+        width: 100%;
+        display: block;
+    }
+    
+    
+    
+    .intorduction-image {
+        max-width: 280px;
+        text-align: center;
+    }
+    .introduction {
+        display: block;
+    }
+    .intorduction-image {
+        width: 40%;
+        height: auto;
+        margin-left: 0%;
+        margin-right: 3%;
+    }
+    .name {
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 15px;
+        font-size: 1.8rem;
+    }
+    .introduction-article {
+        font-size: 12px;
+        padding-top: 15px;
+        width: 90%;
+        text-align: center;
+        border-top: rgb(77, 76, 76) 1px solid;
+    }
+    .page-title {
+        width: 55vw;
+        margin: 20px 0 0 0 ;
+    }
+    .resume-wrapper {
+        padding-bottom: 50px;
+    }
+    .bg-resume {
+        height: 350px;
+    }
+    .resume{
+        width: 92vw;
+        border: 0.6px rgb(31, 31, 31) solid;
+    }
+    
+
+    .skill-wrapper {
+        margin: 0;
+    }
+    .skilltitle-wrapper {
+        margin: 20px 0 0 0;
+        text-align: center;
+    }
+
+    .worktitle-wrapper {
+        margin: 0 0 30px 0;
+        text-align: center;
+    }
+    .item-contents {
+        display: block;
+        transform: scale(0.85);
+    }
+
+    .item-list {
+        width: 100%;
+        margin-bottom: 0px;
+    }
+    .item-list>*{
+        margin-bottom: 25px;
+    }
+    .item-contents::after {
+        display: none;
+    }
+    li .skill-title {
+        font-size: 1.1rem;
+        margin-top: 13px;
+    }
+    li .article {
+        font-size: 12px;
+        line-height: 1.5;
+    }
+    .item-contents li img {
+        width: 25vw;
+        height: 25vw;
+        margin-top: 14px;
+    }
+    .work-contents {
+        display: block;
+        margin-top: 50px;
+    }
+    .work-item-wrapper {
+        max-width: 100%;
+        margin-bottom: 50px;
+    }
+    .work-item-wrapper img {
+        width: 60vw;
+    }
+    .work-item p {
+        font-size: 1.5rem;
+        margin-top: 10px;
+    }
+    .footer-wrapper {
+        display: grid;
+        justify-content: unset;
+    }
+    footer nav {
+        margin-top: 40px;
+        font-size: 0.8rem;
+        margin-right: 0%;
+    }
+    footer nav ul{
+        text-align: center;
+        width: 100%;
+    }
+    footer li>*{
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    .contact {
+        order: 2;
+        margin-top: 30px;
+    }
+    .footer {
+        order: 1;
+    }
+    footer .copylight{
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 50px;
+        font-size: 0.6rem;
+    }
+}
