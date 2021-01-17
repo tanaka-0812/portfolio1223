@@ -1,0 +1,625 @@
+@charset "utf-8";
+
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+body {
+    max-width: 1280px;
+    min-height: 100vh;
+    margin: 0 auto;
+}
+
+header {
+    background-color: rgb(51, 51, 51);
+    max-width: 100%;
+    width: 100%;
+    height: 70px;
+    font-family: 'Noto Serif JP', serif;
+    /* position: fixed;
+    z-index: 1000; */
+
+}
+
+/* ーーーーーーーーーーーーーPCのナビメニューになります */
+
+#navigation {
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+#navigation li{
+    margin: auto 10px;
+    position: relative;
+    font-size: 17px;
+}
+#navigation li a{
+    text-decoration: none;
+    margin: 10px;
+    padding: 25px;
+    color: white;
+}
+#navigation li i{
+    margin-right: 10px;
+}
+#navigation li ul{
+    position: absolute;
+    width: 250px;
+    margin-top: 25px;
+    background-color: rgba(51,51,51,0.9);
+    display: none;
+}
+#navigation li:hover>ul{
+    display: block;
+    position: absolute;
+    z-index: 1000;
+    
+
+}
+#navigation li ul li{
+    margin: 0;
+    padding: 20px 15px 20px 0px;
+    font-size: 16px;
+    
+}
+#navigation li ul li:nth-child(n+2){
+    border-top: white 1px solid;
+}
+
+/* ーーーーーーーーーーーーここからはタブレット・スマホのメニューバーになります。 */
+
+nav.globalMenu {
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    left: 0;
+    background: #fff;
+    text-align: center;
+    transform: translateY(-100%);
+    transition: all 0.6s;
+    width: 100%;
+}
+
+  
+nav.globalMenu ul {
+    background: rgb(51,51,51);
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+}
+  
+nav.globalMenu ul li {
+    font-size: 1.1em;
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    border-bottom: 1px solid white;
+}
+  
+/* 最後はラインを描かない */
+nav.globalMenu ul li:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+  
+nav.globalMenu ul li a {
+    display: block;
+    color: white;
+    padding: 25px 0;
+    text-decoration: none;
+}
+  
+/* このクラスを、jQueryで付与・削除する */
+nav.globalMenu.active {
+    transform: translateY(0%);
+}
+  
+.navToggle {
+    display: block;
+    position: fixed;    /* bodyに対しての絶対位置指定 */
+    right: 20px;
+    top: 10px;
+    width: 42px;
+    height: 51px;
+    cursor: pointer;
+    z-index: 100;
+    background: #666;
+    text-align: center;
+}
+  
+.navToggle span {
+    display: block;
+    position: absolute;    /* .navToggleに対して */
+    width: 30px;
+    border-bottom: solid 3px #eee;
+    -webkit-transition: .35s ease-in-out;
+    -moz-transition: .35s ease-in-out;
+    transition: .35s ease-in-out;
+    left: 6px;
+}
+  
+.navToggle span:nth-child(1) {
+    top: 9px;
+}
+  
+.navToggle span:nth-child(2) {
+    top: 18px;
+}
+  
+.navToggle span:nth-child(3) {
+    top: 27px;
+}
+  
+.navToggle span:nth-child(4) {
+    border: none;
+    color: #eee;
+    font-size: 9px;
+    font-weight: bold;
+    top: 34px;
+}
+  
+ 
+  
+  /* 最初のspanをマイナス45度に */
+.navToggle.active span:nth-child(1) {
+    top: 18px;
+    left: 6px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+  
+/* 2番目と3番目のspanを45度に */
+.navToggle.active span:nth-child(2),
+.navToggle.active span:nth-child(3) {
+    top: 18px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.main-wrapper{
+    max-width: 1280px;
+    margin-top: 100px;
+}
+
+
+
+.img-wrapper {
+    text-align: center;
+}
+
+.img-wrapper img{
+    max-width: 1100px;
+    width: 78vw;
+    height: auto;
+}
+.articl-wrapper {
+    max-width: 1280px;
+    width: 78%;
+    margin: 0 auto;
+    margin-top: 80px;
+    color: rgb(51 ,51,51);
+    padding-bottom: 50px;
+    opacity: 0;
+    transform: translateX(20px);
+}
+.articl-wrapper.show {
+    opacity: 1;
+    transform: none;
+    transition: 1s;
+}
+
+h3 {
+    font-size: 1.7rem;
+    margin-bottom: 20px;
+    font-family: 'Noto Serif JP', serif;
+}
+.articl-wrapper{
+    line-height: 1.5;
+}
+
+.other-pages-wrapper {
+    padding-top: 100px;
+    margin-bottom: 140px;
+    border-top: rgb(51 ,51,51) 1px solid;
+}
+
+.other-pages{
+    max-width: 1100px;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    margin: 0 auto;
+    width: 78vw;
+    flex-wrap: wrap;
+    text-align: center;
+    font-size: 0;
+    
+}
+
+.other-pages>*{
+    margin-bottom: 40px;
+    border: rgb(51 ,51,51) 1px solid;
+    box-sizing: border-box;
+    font-size: 0;
+}
+
+.other-pages a{
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+
+}
+.other-pages p{
+    font-size: 0.8rem;
+    background: rgb(51 ,51,51);
+    padding: 7px 0 6px 0;
+    vertical-align: middle;
+}
+
+.other-pages img:hover{
+    opacity: 0.4;
+}
+.scroll-item1,
+.scroll-item2,
+.scroll-item3,
+.scroll-item4,
+.scroll-item5 {
+    opacity: 0;
+    transform: translateY(30px);
+}
+.scroll-item1.show,
+.scroll-item2.show,
+.scroll-item3.show,
+.scroll-item4.show,
+.scroll-item5.show {
+    opacity: 1;
+    transform: none;
+}
+.scroll-item1.show {
+    transition: 1s;
+}
+.scroll-item2.show {
+    transition: 1.5s;
+}
+.scroll-item3.show {
+    transition: 2.0s;
+}
+.scroll-item4.show {
+    transition: 2.5s;
+}
+.scroll-item5.show {
+    transition: 3.0s;
+}
+
+
+
+/* ボタンデザイン */
+
+/* 共通 */
+
+.button {
+    display: inline-block;
+    width: 200px;
+    height: 54px;
+    text-align: left;
+    padding-left: 15px;
+    text-decoration: none;
+    line-height: 54px;
+    outline: none;
+    font-family: 'Noto Serif JP', serif;
+  }
+
+  .button::before,
+  .button::after {
+    position: absolute;
+    z-index: -1;
+    display: block;
+    content: '';
+  }
+  .button,
+  .button::before,
+  .button::after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+  }
+
+
+
+/* ----------- */
+.btn-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    max-width: 50%;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(30px);
+}
+.btn-wrapper.show {
+    opacity: 1;
+    transform: none;
+    transition: 1s;
+}
+
+.btn-wrapper>* {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}
+
+.button {
+    position: relative;
+    z-index: 2;
+    background-color: #fff;
+    border: 2px solid #333;
+    color: #333;
+    line-height: 50px;
+    overflow: hidden;
+  }
+  .button:hover {
+    color: #fff;
+  }
+  .button::after {
+    left: -100%;
+    width: 100%;
+    height: 100%;
+  }
+  .button:hover::after {
+    top: 0;
+    left: 0;
+    background-color: #333;
+  }
+
+/* ---------------------フッターになります */
+footer {
+    background: rgb(51 ,51,51);
+    height: 300px;
+    margin-top: 80px;
+    font-family: 'Noto Serif JP', serif;
+}
+.footerscroll {
+    opacity: 0;
+    transform: translateY(50px);
+}
+.footerscroll.show {
+    opacity: 1;
+    transition: 1.5s;
+    transform: none;
+}
+
+.footer-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+.contact {
+    margin-left: 10%;
+    margin-top: 70px;
+    color: white;
+}
+.footer-name {
+    font-size: 2rem;
+
+}
+.footer-tel {
+    font-size: 1.2rem;
+    margin-top: 25px;
+}
+.footer-mail {
+    font-size: 1.2rem;
+    margin-top: 25px;
+}
+footer nav {
+    text-align: right;
+    margin-top: 70px;
+    margin-right: 7%;
+    line-height: 2;
+}
+footer li {
+    display: inline-block;
+    list-style: none;
+    min-width: 90px;
+}
+footer li:not(:last-child){
+    border-right: 2px solid white;
+}
+footer li>*{
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.footer-nav a {
+    text-decoration: none;
+    color: white;
+}
+
+.footer a:hover{
+    color:rgb(247, 227, 77);
+    border-bottom:2px solid rgb(247, 227, 77);
+    padding-bottom: 6px;
+}
+footer .copylight {
+    text-align: center;
+    color: white;
+    margin-top: 60px;
+    line-height: 1.5;
+    font-size: 12px;
+}
+
+
+
+
+@media screen and (max-width:1024px){
+    .btn-wrapper {
+        max-width: 80%;
+    }
+    .img-wrapper img{
+        width: 90vw;
+    }
+    .articl-wrapper {
+        width: 90vw;
+    }
+    .other-pages {
+        width: 90vw;
+    }
+    .other-pages-wrapper {
+        margin-bottom: 80px;
+    }
+}
+
+
+@media screen and (min-width:1024px){
+    .navToggle {
+        display: none;
+    }
+
+}
+
+
+
+
+@media screen and (max-width:1000px){
+    .pc-nav {
+        display: none;
+    }
+}
+
+
+@media screen and (max-width:850px){
+    .main-wrapper{
+        margin-top: 70px;
+    }
+    
+    .other-pages::after{
+        content:"";
+        width: 160px;
+    }
+    .other-pages {
+        width: 75%;
+    }
+    .btn-wrapper {
+        max-width: 80%;
+    }
+    .img-wrapper img{
+        width: 85vw;
+    }
+    .articl-wrapper {
+        width: 85%;
+    }
+    .btn-wrapper {
+        max-width: 65%;
+    }
+    .contact {
+        margin-left: 7%;
+    }
+    .scroll-item1.show,
+    .scroll-item2.show,
+    .scroll-item3.show,
+    .scroll-item4.show,
+    .scroll-item5.show {
+        opacity: 1;
+        transform: none;
+        transition: 1s;
+    }
+
+    .footer-name {
+        font-size: 1.7rem;
+    
+    }
+    .footer-tel {
+        font-size: 1rem;
+        margin-top: 20px;
+    }
+    .footer-mail {
+        font-size: 1rem;
+        margin-top: 20px;
+    }
+    footer nav {
+        font-size: 0.9rem;
+    }
+    footer li>*{
+        padding-right: 9px;
+        padding-left: 9px;
+    }
+    footer li {
+        min-width: unset;
+    }
+}
+
+
+@media screen and (max-width:450px){
+    .main-wrapper{
+        margin-top: 20px;
+    }
+    
+    h3{
+        font-size: 1.3rem;
+    }
+    .articl-wrapper {
+        margin-top: 40px;
+    }
+    .articl-wrapper p{
+        font-size: 0.9rem;
+    }
+
+    .other-pages-wrapper {
+        padding-top: 50px;
+    }
+    .other-pages {
+        width: 90%;
+        justify-content: space-around;
+    }
+
+    .other-pages>*{
+        transform: scale(0.9,0.9);
+    }
+    .other-pages>*{
+        margin-bottom: 10px;
+    }
+    .img-wrapper img{
+        width: 100vw;
+    }
+    .articl-wrapper {
+        width: 92vw;
+    }
+    .footer-wrapper {
+        display: grid;
+        justify-content: unset;
+    }
+    footer nav {
+        margin-top: 40px;
+        font-size: 0.8rem;
+        margin-right: 0%;
+    }
+    footer nav ul{
+        text-align: center;
+        width: 100%;
+    }
+    footer li>*{
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    .contact {
+        order: 2;
+        margin-top: 30px;
+    }
+    .footer {
+        order: 1;
+    }
+    footer .copylight{
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 50px;
+        font-size: 0.6rem;
+    }
+    
+}
+
+@media screen and (max-width:320px){
+    .other-pages>*{
+        transform: scale(1.2,1.2);
+    }
+
+}
